@@ -1,0 +1,130 @@
+
+6.HTML DOM – adding , deleting elements, moving elements,changing colors, fonts.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function start(){
+            const myBody = document.getElementsByTagName("body")[0];
+            const myTable = document.createElement("table");
+            const myTableBody = document.createElement("tbody");
+            
+            for (let j = 0; j < 3; j++) {
+                const myCurrentRow = document.createElement("tr");
+                
+                for (let i = 0; i < 4; i++) {
+                    const myCurrentCell = document.createElement("td");
+                    const currentText = document.createTextNode(`cell is row ${j} column ${i}`);
+                    myCurrentCell.appendChild(currentText);
+                    myCurrentRow.appendChild(myCurrentCell);
+                }
+                
+                myTableBody.appendChild(myCurrentRow);
+            }
+            
+            myTable.appendChild(myTableBody);
+            myBody.appendChild(myTable);
+            myTable.setAttribute("border", "2");
+        }
+    </script>
+</head>
+<body onload="start()">
+</body>
+</html>
+
+
+7(b) Node.js simple application
+var http= require('http');
+http.createServer( function(req,res){
+    res.writeHead(200,{'Content-Type': 'text/html'});
+    res.end('Hello World');
+}).listen(8080);
+// first run node filename.js after entering into the directory and then run localhost:8080 in the browser//
+
+
+8(b) React js app
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Hello</h1>
+        <p> This is the student form</p>
+        <form>
+          <label>
+            Name:
+            <input type="text" name="name" />
+            </label><br></br><br></br>
+            <label>
+              Email:
+              <input type="email" name="email" />
+              </label><br></br><br></br>
+            <label>
+              Phone:
+              <input type="text" name="phone no"/>
+            </label><br></br><br></br>
+            <input type="submit" value="Submit" ></input>
+        </form>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
+step 1- npx create-react-app my-app
+step 2-cd my-app
+step 3-Navigate to the src directory and replace the contents of App.js with your provided code.
+step 4-npm start
+step 5- http://localhost:3000 in browser 
+
+
+9(a)
+step 1- Initialize a new Node.js project:
+
+mkdir form-handling
+cd form-handling
+npm init -y
+npm install express
+
+step 2-create filename.js: 
+
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+  res.send(`
+    <form action="/submit" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  `);
+});
+
+app.post('/submit', (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  res.send(`Name: ${name} <br> Email: ${email}`);
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
+});
+
+step 3-run the server:
+node filename.js
