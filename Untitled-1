@@ -1,0 +1,183 @@
+1(a) 1(b) static web pages and image,hyperlink
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login Page</title>
+    <style>
+        form{
+            background-color: rgb(0, 255, 204);
+            color: rgb(29, 32, 34);
+            font-size: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Student Login</h1>
+    <form id='loginForm'>
+        Name:<input type="text" name="name" size="25"><br><br>
+        Email id:<input type="email" name="email"><br><br>
+        Password: <input type="password" name="password"><br><br>
+        Mobile Number: <input type="number" name="Mobile" size="10"><br><br>
+        <button type="submit" style="padding: 10px 20px; font-size: 15px;">Submit</button>
+    </form>
+    <img src="C:\Users\lenovo\Desktop\wp pdfs\Screenshot 2024-03-26 192533.png" alt="image"><br><br><Br>
+
+    <a href="https://www.google.com/">Go to google</a>
+    <br><br>
+    Text Box: <input type="text" name="textbox" id="textbox" placeholder="Enter Text Here" >
+    Text Area: <textarea id="multilinetext" name="multilinetext" rows="5" cols="60">Enter Text Here</textarea> 
+
+</body>
+</html>
+
+
+2(a) 2(b) css and bootstrap
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS and Bootstrap in HTML</title>
+    <style>
+        body{
+            background-color: aquamarine;
+        }
+        h1{
+            text-align: center;
+            text-decoration: solid;
+
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        form{
+            font-size: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+        form button{
+            padding: 10px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Login</h1>
+    <form id='loginForm'>
+        Name:<input type="text" name="name" size="25"><br><br>
+        Email id:<input type="email" name="email"><br><br>
+        Password: <input type="password" name="password"><br><br>
+        Mobile Number: <input type="number" name="Mobile" size="10"><br><br>
+        <button type="submit" id="button">Submit</button>
+    </form>
+</body>
+</html>
+
+
+3.(loops, functions,arrays) (file to be saved as .js)
+function tsum (arr){
+    let sum = 0 ;
+    for (let i=0 ; i<arr.length ; i++){
+        sum+=arr[i];
+    }
+    return sum ; 
+}
+const numbers=[1,2,3,4,5];
+console.log("array:",numbers);
+const sum=tsum(numbers);
+console.log("sum is:",sum);
+
+
+4(a) right and left click
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handle mouse click</title>
+    <style>
+        .button{
+            padding: 10px 20px;
+            font-size: 15px;
+            color: blueviolet;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Handle mouse click</h1>
+    <button class="button"><b>Click Me!</b></button>
+    <script>
+        function handleLeftClick(event){
+            console.log("Left button clicked!");
+        }
+        function handleRightClick(event){
+            console.log("Right button clicked!");
+            event.preventDefault();
+        }
+        document.addEventListener('click',function(event){
+            if (event.button === 0){
+                handleLeftClick(event);
+            }
+        })
+        document.addEventListener('contextmenu',handleRightClick);
+    </script>
+</body>
+</html>
+
+4(b) scroll
+<script>
+        function scrollHandler(event){
+            if (event.deltaY < 0){
+                console.log("Scrolled up")
+            }
+            else if(event.deltaY >0){
+                console.log("Scrolled down")
+            }
+        }
+        document.addEventListener('wheel',scrollHandler)
+    </script>
+
+
+
+5. regex (user input validation form)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student login</title>
+</head>
+<body>
+    <h1>Student login page</h1>
+    <form id="loginForm">
+        Username: <input type="text" id="username" name="username" required></br></br>
+
+        Password: <input type="password" id="password" name="password" required></br></br>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit',function(event){
+            event.preventDefault()
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const usernameRegex=/^[a-zA-Z0-9_-].{6,20}/;
+            const passwordRegex=/^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,20}/;
+
+            if (!usernameRegex.test(username)){
+                alert("unsername invalid");
+                return;
+            }
+            if (!passwordRegex.test(password)){
+                alert("invalid password");
+                return;
+            }
+            alert ("login successful");
+        })
+    </script>
+</body>
+</html>
